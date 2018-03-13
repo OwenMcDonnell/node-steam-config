@@ -17,8 +17,8 @@ let paths
 
 describe('SteamPaths', function () {
   beforeEach(async function () {
-    await dummy.makeDummy(pathTo).then(() => {}).catch((err) => {
-      throw err
+    await dummy.makeDummy(pathTo, true).catch((err) => {
+      throw new Error(err)
     })
   })
 
@@ -46,7 +46,7 @@ describe('SteamPaths', function () {
   this.timeout(4000)
 
   beforeEach(async function () {
-    dummy.makeDummy(pathTo, true).catch((err) => {
+    await dummy.makeDummy(pathTo, true).catch((err) => {
       throw new Error(err)
     })
     paths = new SteamPaths()
