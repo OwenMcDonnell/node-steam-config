@@ -244,7 +244,7 @@ async function backup () {
 
     await afs.writeFileAsync(path.join(options.destination, `backup-${tmp.id64}.json`), JSON.stringify(data, null, 2))
   } catch (err) {
-    throw new Error(err)
+    throw err
   }
 }
 
@@ -263,7 +263,7 @@ async function restore () {
     steam.loginusers.users[ data.user.id64 ].sharedconfig = Object.assign({}, steam.loginusers.users[ data.user.id64 ].sharedconfig, data.sharedconfig)
     steam.loginusers.users[ data.user.id64 ].localconfig = Object.assign({}, steam.loginusers.users[ data.user.id64 ].localconfig, data.localconfig)
   } catch (err) {
-    throw new Error(err)
+    throw err
   }
 
   await steam.save([steam.paths.config, steam.paths.loginusers, steam.paths.registry, steam.paths.sharedconfig, steam.paths.localconfig])

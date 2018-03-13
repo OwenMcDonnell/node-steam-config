@@ -41,8 +41,9 @@ describe('SteamPaths', function () {
 })
 
 describe('SteamPaths', function () {
+  this.timeout(4000)
+
   beforeEach(function (done) {
-    this.timeout(4000)
     dummy.makeDummy(pathTo, true).then(function () {
       paths = new SteamPaths()
       paths.rootPath = pathTo

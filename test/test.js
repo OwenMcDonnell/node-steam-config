@@ -14,15 +14,15 @@ let pathTo
 let steam
 let winreg
 
-if (process.env.CI === true) {
+if (process.env.CI === true || process.env.STEAM_CON_TRP === true) { // Test Real Paths
   if (platform === 'darwin') {
     pathTo = path.join(require('os').homedir(), 'Library', 'Application Support', 'Steam')
-  } /* istanbul ignore next */ else if (platform === 'linux') {
+  } else if (platform === 'linux') {
     pathTo = path.join(require('os').homedir(), '.steam')
   } else if (platform === 'win32') {
     if (arch === 'ia32') {
       pathTo = path.join('C:', 'Program Files', 'Steam')
-    } else if (arch === 'ia64') {
+    } else if (arch === 'x64') {
       pathTo = path.join('C:', 'Program Files (x86)', 'Steam')
     }
   }
@@ -35,17 +35,19 @@ if (platform === 'win32') {
 }
 
 describe('SteamConfig', function () {
+  this.timeout(4000)
+
   beforeEach(async function () {
-    this.timeout(4000)
-    await dummy.makeDummy(pathTo, true)
     steam = new SteamConfig()
+    await dummy.makeDummy(pathTo, true)
   })
 
-  afterEach(function () {
-    if (platform === 'win32' && winreg.has('HKCU\\Software', 'Valve')) {
-      winreg.delete('HKCU\\Software', 'Valve')
+  afterEach(async function (done) {
+    if (platform === 'win32' && await winreg.has('HKCU\\Software', 'Valve')) {
+      await winreg.delete('HKCU\\Software', 'Valve')
     }
     steam = undefined
+    done()
   })
 
   describe('#detectRoot(autoSet)', function () {
@@ -124,6 +126,8 @@ describe('SteamConfig', function () {
 })
 
 describe('SteamConfig', function () {
+  this.timeout(4000)
+
   beforeEach(async function () {
     this.timeout(4000)
     await dummy.makeDummy(pathTo, true)
@@ -137,11 +141,12 @@ describe('SteamConfig', function () {
     steam.paths.accountId = steam.currentUser.accountId
   })
 
-  afterEach(function () {
-    if (platform === 'win32' && winreg.has('HKCU\\Software', 'Valve')) {
-      winreg.delete('HKCU\\Software', 'Valve')
+  afterEach(async function (done) {
+    if (platform === 'win32' && await winreg.has('HKCU\\Software', 'Valve')) {
+      await winreg.delete('HKCU\\Software', 'Valve')
     }
     steam = undefined
+    done()
   })
 
   describe('#detectUser', function () {
