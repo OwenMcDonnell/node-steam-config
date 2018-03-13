@@ -46,14 +46,13 @@ describe('SteamPaths', function () {
   this.timeout(4000)
 
   beforeEach(async function () {
-    await dummy.makeDummy(pathTo, true).then(() => {
-      paths = new SteamPaths()
-      paths.rootPath = pathTo
-      paths.id64 = id64
-      paths.accountId = accountId
-    }).catch((err) => {
-      throw err
+    dummy.makeDummy(pathTo, true).catch((err) => {
+      throw new Error(err)
     })
+    paths = new SteamPaths()
+    paths.rootPath = pathTo
+    paths.id64 = id64
+    paths.accountId = accountId
   })
 
   afterEach(function () {
