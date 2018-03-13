@@ -39,15 +39,16 @@ describe('SteamConfig', function () {
 
   beforeEach(async function () {
     steam = new SteamConfig()
-    await dummy.makeDummy(pathTo, true)
+    await dummy.makeDummy(pathTo, true).catch((err) => {
+      throw err
+    })
   })
 
-  afterEach(async function (done) {
+  afterEach(async function () {
     if (platform === 'win32' && await winreg.has('HKCU\\Software', 'Valve')) {
       await winreg.delete('HKCU\\Software', 'Valve')
     }
     steam = undefined
-    done()
   })
 
   describe('#detectRoot(autoSet)', function () {
@@ -130,7 +131,9 @@ describe('SteamConfig', function () {
 
   beforeEach(async function () {
     this.timeout(4000)
-    await dummy.makeDummy(pathTo, true)
+    await dummy.makeDummy(pathTo, true).catch((err) => {
+      throw err
+    })
     steam = new SteamConfig()
     steam.setRoot(pathTo)
     steam.currentUser = {
@@ -141,12 +144,11 @@ describe('SteamConfig', function () {
     steam.paths.accountId = steam.currentUser.accountId
   })
 
-  afterEach(async function (done) {
+  afterEach(async function () {
     if (platform === 'win32' && await winreg.has('HKCU\\Software', 'Valve')) {
       await winreg.delete('HKCU\\Software', 'Valve')
     }
     steam = undefined
-    done()
   })
 
   describe('#detectUser', function () {

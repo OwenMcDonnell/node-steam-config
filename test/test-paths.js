@@ -16,8 +16,10 @@ let dummy = new Dummy()
 let paths
 
 describe('SteamPaths', function () {
-  beforeEach(function (done) {
-    dummy.makeDummy(pathTo).then(done)
+  beforeEach(async function () {
+    await dummy.makeDummy(pathTo).then(() => {}).catch((err) => {
+      throw err
+    })
   })
 
   describe('#constructor', function () {
@@ -43,13 +45,15 @@ describe('SteamPaths', function () {
 describe('SteamPaths', function () {
   this.timeout(4000)
 
-  beforeEach(function (done) {
-    dummy.makeDummy(pathTo, true).then(function () {
+  beforeEach(async function () {
+    await dummy.makeDummy(pathTo, true).then(() => {
       paths = new SteamPaths()
       paths.rootPath = pathTo
       paths.id64 = id64
       paths.accountId = accountId
-    }).then(done)
+    }).catch((err) => {
+      throw err
+    })
   })
 
   afterEach(function () {
