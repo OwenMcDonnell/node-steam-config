@@ -39,7 +39,7 @@ describe('SteamConfig', function () {
 
   beforeEach(async function () {
     steam = new SteamConfig()
-    await dummy.makeDummy(pathTo, true).catch((err) => {
+    return dummy.makeDummy(pathTo, true).catch((err) => {
       throw err
     })
   })
