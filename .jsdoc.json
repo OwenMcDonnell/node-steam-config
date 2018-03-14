@@ -16,12 +16,13 @@
         "dictionaries": ["jsdoc", "closure"]
     },
     "templates": {
+        "referenceTitle": "SteamConfig API Reference",
+        "disableSort": true,
         "monospaceLinks": true,
         "default": {
           "includeDate": false,
           "outputSourceFiles": false
         },
-        "includeDate": false,
         "navType": "vertical",
         "linenums": true,
         "collapseSymbols": true,
