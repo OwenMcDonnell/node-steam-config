@@ -31,6 +31,8 @@ describe('getAccountIdFromId64', function () {
 })
 
 describe('requestWithCache', function () {
+  this.timeout(8000)
+
   it('should throw an error for an invalid function arg', async function () {
     try {
       await requestWithCache(function () {
@@ -45,6 +47,8 @@ describe('requestWithCache', function () {
 })
 
 describe('requestOwnedApps', function () {
+  this.timeout(8000)
+
   it('should throw an error for an invalid argument', async function requestOwnedAppsInvalid () {
     try {
       await requestOwnedApps({user: '8675309'})
@@ -58,7 +62,6 @@ describe('requestOwnedApps', function () {
   })
 
   it('should get the list of owned apps from the internet and cache them', async function requestOwnedAppsValid () {
-    this.timeout(15000)
     let owned = await requestOwnedApps('76561198067577712', true, {enabled: true, folder: path.join(__dirname, 'data')}).catch((err) => {
       throw err
     })
@@ -66,13 +69,11 @@ describe('requestOwnedApps', function () {
   })
 
   it('should get the list of owned apps from the cache', async function requestOwnedAppsAllowCache () {
-    this.timeout(10000)
     let owned = await requestOwnedApps('76561198067577712', false, {enabled: true, folder: path.join(__dirname, 'data')})
     owned.length.should.not.equal(0)
   })
 
   it('should convert a single app to a list with a single entry', async function requestOwnedAppsSingle () {
-    this.timeout(10000)
     let owned = await requestOwnedApps('76561198261241942', true, {enabled: true, folder: path.join(__dirname, 'data')})
     owned.should.be.a('array')
     owned.length.should.equal(1)
@@ -80,20 +81,22 @@ describe('requestOwnedApps', function () {
 })
 
 describe('requestTags', function () {
+  this.timeout(8000)
+
   it('should get the array of tags from the internet and cache it', async function requestTagsValid () {
-    this.timeout(8000)
     let tags = await requestTags(true, {enabled: true, folder: path.join(__dirname, 'data')})
     tags.should.be.a('array')
   })
 
   it('should get the array of tags from the cache', async function requestTagsValid () {
-    this.timeout(8000)
     let tags = await requestTags(false, {enabled: true, folder: path.join(__dirname, 'data')})
     tags.should.be.a('array')
   })
 })
 
 describe('requestGenres', function () {
+  this.timeout(8000)
+
   it('should throw an error for an invalid argument', async function requestGenresInvalid () {
     try {
       await requestGenres({user: '8675309'})
@@ -107,14 +110,12 @@ describe('requestGenres', function () {
   })
 
   it('should get the genres for a valid argument from the internet and cache them', async function requestGenresInvalid () {
-    this.timeout(8000)
     let genres = await requestGenres('218620', true, {enabled: true, folder: path.join(__dirname, 'data')})
     genres.should.be.a('array')
     genres[ 0 ].should.have.property('appid').equal('218620')
   })
 
   it('should get the genres for a valid argument from the cache', async function requestGenresInvalid () {
-    this.timeout(8000)
     let genres = await requestGenres('218620', false, {enabled: true, folder: path.join(__dirname, 'data')})
     genres.should.be.a('array')
     genres[ 0 ].should.have.property('appid').equal('218620')
