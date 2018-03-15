@@ -102,11 +102,11 @@ async function run () {
       return console.info(`No mode set. Nothing to do!`)
     }
 
-    if (!options.path) {
+    if (!options.steam) {
       steam.detectRoot(true)
-      options.path = steam.paths.rootPath
+      options.steam = steam.paths.rootPath
     } else {
-      steam.setRoot(path.join(options.path))
+      steam.setRoot(path.join(options.steam))
     }
 
     await steam.load([steam.paths.registry, steam.paths.loginusers])

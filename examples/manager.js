@@ -55,8 +55,8 @@ async function init () {
       process.exit(0)
     }
 
-    if (options.path) {
-      await steam.setRoot(path.join(options.path))
+    if (options.steam) {
+      await steam.setRoot(path.join(options.steam))
     } else {
       await steam.detectRoot(true)
     }
