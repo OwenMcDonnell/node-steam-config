@@ -37,7 +37,7 @@ if (platform === 'win32') {
 describe('SteamConfig', function () {
   this.timeout(4000)
 
-  beforeEach(async function () {
+  beforeEach(function () {
     steam = new SteamConfig()
     return dummy.makeDummy(pathTo, true).catch((err) => {
       throw err
