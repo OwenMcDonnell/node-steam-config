@@ -39,7 +39,7 @@
   "scripts": {
     "lint": "yarn standard",
     "test": "mocha",
-    "nyct": "nyc mocha",
+    "nyct": "nyc mocha --timeout=10000",
     "htmlcov": "nyc report --reporter=html",
     "textcov": "nyc report --reporter=text-lcov > coverage.lcov",
     "coverage": "yarn htmlcov && yarn textcov",
