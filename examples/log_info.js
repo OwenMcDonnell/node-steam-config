@@ -12,7 +12,7 @@ cli.width = 80
 cli.option_width = 35
 
 let options = cli.parse({
-  path: ['p', 'Path to Steam installation.', 'path', undefined],
+  steam: ['s', 'Path to Steam installation.', 'path', undefined],
   user: ['u', 'User to switch to by account name or display name.', 'string', undefined]
 })
 

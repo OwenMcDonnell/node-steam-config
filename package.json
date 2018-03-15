@@ -20,6 +20,7 @@
     "simple-vdf2": "^1.2.1"
   },
   "devDependencies": {
+    "7zip-bin": "^3.1.0",
     "chai": "^4.1.2",
     "cli": "^1.0.1",
     "codecov": "^3.0.0",
@@ -31,13 +32,14 @@
   },
   "scripts": {
     "lint": "yarn standard",
-    "test": "mocha",
+    "test": "standard && mocha",
     "nyct": "nyc mocha",
     "htmlcov": "nyc report --reporter=html",
     "textcov": "nyc report --reporter=text-lcov > coverage.lcov",
     "coverage": "yarn htmlcov && yarn textcov",
     "codecov": "codecov",
-    "docs": "jsdoc -c .jsdoc.json -R README.md -t ./node_modules/jsdoc/templates/jsdoc-braintree",
+    "docs-prep": "node ./install-jsdoc-braintree.js",
+    "docs": "jsdoc -c .jsdoc.json -R README.md",
     "make-examples-dummy": "node ./examples/example_dummy.js",
     "test-switch": "node ./examples/switch_user.js -p ./examples/Dummy",
     "test-log": "node ./examples/log_info.js -p ./examples/Dummy",

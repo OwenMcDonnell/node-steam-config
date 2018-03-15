@@ -4,7 +4,7 @@
 
 [![Codecov branch](https://img.shields.io/codecov/c/github/l3laze/node-steam-config/master.svg)](https://codecov.io/gh/l3laze/node-steam-config/list/master) [![Codacy branch grade](https://img.shields.io/codacy/grade/6ce28f60d6e64da8bd2c36782fd57973/master.svg)](a)
 
-[![Greenkeeper](https://badges.greenkeeper.io/greenkeeperio/greenkeeper.svg)](https://github.com/l3laze/node-steam-config/issues) [![Known Vulnerabilities](https://snyk.io/test/github/l3laze/node-steam-config/badge.svg?targetFile=package.json)](https://snyk.io/test/github/l3laze/node-steam-config?targetFile=package.json)
+[![Known Vulnerabilities](https://snyk.io/test/github/l3laze/node-steam-config/badge.svg?targetFile=package.json)](https://snyk.io/test/github/l3laze/node-steam-config?targetFile=package.json)
 
 [![Dependencies](https://img.shields.io/david/l3laze/node-steam-config.svg)](https://github.com/l3laze/node-steam-config/issues) [![Dev Dependencies](https://img.shields.io/david/dev/l3laze/node-steam-config.svg)](https://github.com/l3laze/node-steam-config) [![Peer Dependencies](https://img.shields.io/david/peer/l3laze/node-steam-config.svg)](https://github.com/l3laze/node-steam-config)
 

@@ -15,7 +15,7 @@ cli.width = 80
 cli.option_width = 35
 
 let options = cli.parse({
-  path: ['p', 'Path to Steam installation.', 'path', undefined],
+  steam: ['s', 'Path to Steam installation.', 'path', undefined],
   user: ['u', 'User to auto-categorize games for.', 'string', undefined],
   backup: ['b', 'Backup categories', 'boolean', false],
   restore: ['r', 'Restore categories', 'boolean', false],
