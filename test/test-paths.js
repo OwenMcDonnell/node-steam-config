@@ -18,8 +18,10 @@ let paths
 describe('SteamPaths', function () {
   this.timeout(4000)
 
-  beforeEach(function () {
-    return dummy.makeDummy(pathTo, true)
+  beforeEach(async function () {
+    await dummy.makeDummy(pathTo, true).catch((err) => {
+      throw err
+    })
   })
 
   describe('#constructor', function () {
