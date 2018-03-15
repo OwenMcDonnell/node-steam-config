@@ -55,10 +55,6 @@ describe('SteamPaths', function () {
     paths.accountId = accountId
   })
 
-  afterEach(function () {
-    paths = undefined
-  })
-
   describe('#rootPath', function () {
     it('should throw an error for an invalid arg to set', function setRootPathThrows () {
       try {

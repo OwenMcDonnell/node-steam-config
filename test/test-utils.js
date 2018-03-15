@@ -13,7 +13,7 @@ const getAccountIdFromId64 = require('../lib/steamdata-utils.js').getAccountIdFr
 chai.should()
 
 describe('steamdata-utils', function () {
-  describe('getAccountIdFromId64', function () {
+  describe('#getAccountIdFromId64', function () {
     it('should throw an error for an invalid argument', function getAccountIdInvalid () {
       try {
         getAccountIdFromId64('{user: "8675309"}')
@@ -31,7 +31,7 @@ describe('steamdata-utils', function () {
     })
   })
 
-  describe('requestWithCache', function () {
+  describe('#requestWithCache', function () {
     this.timeout(8000)
 
     it('should throw an error for an invalid function arg', async function () {
@@ -47,7 +47,7 @@ describe('steamdata-utils', function () {
     })
   })
 
-  describe('requestOwnedApps', function () {
+  describe('#requestOwnedApps', function () {
     this.timeout(8000)
 
     it('should throw an error for an invalid argument', async function requestOwnedAppsInvalid () {
@@ -81,7 +81,7 @@ describe('steamdata-utils', function () {
     })
   })
 
-  describe('requestTags', function () {
+  describe('#requestTags', function () {
     this.timeout(8000)
 
     it('should get the array of tags from the internet and cache it', async function requestTagsValid () {
@@ -95,7 +95,7 @@ describe('steamdata-utils', function () {
     })
   })
 
-  describe('requestGenres', function () {
+  describe('#requestGenres', function () {
     this.timeout(8000)
 
     it('should throw an error for an invalid argument', async function requestGenresInvalid () {
