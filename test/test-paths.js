@@ -18,7 +18,7 @@ let paths
 describe('SteamPaths', function () {
   this.timeout(4000)
 
-  beforeEach(async function () {
+  beforeEach(function () {
     return dummy.makeDummy(pathTo, true)
   })
 
