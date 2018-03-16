@@ -24,8 +24,8 @@ install:
 
 
 # Quiet-ish build.
-#build:
-  #verbosity: minimal
+build:
+  verbosity: minimal
 
 
 # Run build (tests)
