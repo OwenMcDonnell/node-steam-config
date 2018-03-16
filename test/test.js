@@ -14,7 +14,7 @@ let pathTo
 let steam
 let winreg
 
-if (process.env.CI === 'true') {
+if (process.env.CI) {
   if (platform === 'darwin') {
     pathTo = path.join(require('os').homedir(), 'Library', 'Application Support', 'Steam')
   } /* istanbul ignore next */ else if (platform === 'linux') {
@@ -27,8 +27,8 @@ if (process.env.CI === 'true') {
 } else {
   pathTo = path.join(__dirname, 'Dummy')
 }
-console.log('ENV')
-console.log(process.env)
+console.log('PATHTO')
+console.log(pathTo)
 
 if (platform === 'win32') {
   winreg = new Registry('HKCU\\Software\\Valve\\Steam')
