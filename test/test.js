@@ -29,7 +29,7 @@ if (process.env.CI === 'True') {
 } else {
   pathTo = path.join(__dirname, 'Dummy')
 }
-console.log("PATH")
+console.log('PATH')
 console.log(pathTo)
 
 if (platform === 'win32') {
