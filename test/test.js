@@ -45,8 +45,8 @@ describe('SteamConfig', function () {
   })
 
   afterEach(function () {
-    if (platform === 'win32' && winreg.has('HKCU\\Software', 'Valve')) {
-      winreg.delete('HKCU\\Software', 'Valve')
+    if (platform === 'win32' && await winreg.has('HKCU\\Software', 'Valve')) {
+      await winreg.delete('HKCU\\Software', 'Valve')
     }
     steam = undefined
   })
@@ -141,8 +141,8 @@ describe('SteamConfig', function () {
   })
 
   afterEach(function () {
-    if (platform === 'win32' && winreg.has('HKCU\\Software', 'Valve')) {
-      winreg.delete('HKCU\\Software', 'Valve')
+    if (platform === 'win32' && await winreg.has('HKCU\\Software', 'Valve')) {
+      await winreg.delete('HKCU\\Software', 'Valve')
     }
     steam = undefined
   })
