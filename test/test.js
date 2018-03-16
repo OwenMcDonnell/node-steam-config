@@ -20,9 +20,9 @@ if (process.env.CI === 'True') {
   } /* istanbul ignore next */ else if (platform === 'linux') {
     pathTo = path.join(require('os').homedir(), '.steam')
   } else if (platform === 'win32') {
-    if (process.arch === 'x32') {
+    if (process.arch === 'x64') {
       pathTo = path.join('C:', 'Program Files', 'Steam')
-    } else if (process.arch === 'x64') {
+    } else {
       pathTo = path.join('C:', 'Program Files (x86)', 'Steam')
     }
   }
