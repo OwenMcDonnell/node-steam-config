@@ -19,8 +19,8 @@ install:
 
 
 # Cache some dirs for faster build.
-#cache:
-  #- "%LOCALAPPDATA%\\Yarn"
+cache:
+  - "%LOCALAPPDATA%\\Yarn"
 
 
 # Quiet-ish build.
@@ -40,4 +40,5 @@ on_success:
   - yarn codecov
 
 environment:
-  nodejs_version: 8
+  matrix:
+    - nodejs_version: 8
