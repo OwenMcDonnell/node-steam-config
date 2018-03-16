@@ -19,13 +19,13 @@ install:
 
 
 # Cache some dirs for faster build.
-cache:
-  - "%LOCALAPPDATA%\\Yarn"
+#cache:
+  #- "%LOCALAPPDATA%\\Yarn"
 
 
 # Quiet-ish build.
-#build:
-#  verbosity: minimal
+build:
+  verbosity: minimal
 
 
 # Run build (tests)
