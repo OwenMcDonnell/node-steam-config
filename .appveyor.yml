@@ -6,7 +6,7 @@ image: ubuntu
   #- git config --global core.autocrlf input
 
 install:
-  - ps: Install-Product node $env:nodejs_version $env:platform
+  #- ps: Install-Product node $env:nodejs_version $env:platform
   - npm i -g npm
   - npm i -g yarn
   #- ps: Write-Host "Installing Yarn 1.5.1..."
