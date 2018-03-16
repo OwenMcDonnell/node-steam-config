@@ -14,15 +14,17 @@ let pathTo
 let steam
 let winreg
 
-if (process.env.CI) {
+if (process.env.CI === true) {
   if (platform === 'darwin') {
     pathTo = path.join(require('os').homedir(), 'Library', 'Application Support', 'Steam')
   } /* istanbul ignore next */ else if (platform === 'linux') {
     pathTo = path.join(require('os').homedir(), '.steam')
-  } else if (platform === 'win32' && arch === 'x86') {
-    pathTo = path.join('C:', 'Program Files (x86)', 'Steam')
-  } else {
-    pathTo = path.join('C:', 'Program Files', 'Steam')
+  } else if (platform === 'win32') {
+    if (arch === 'ia32') {
+      pathTo = path.join('C:', 'Program Files', 'Steam')
+    } else if (arch === 'ia64') {
+      pathTo = path.join('C:', 'Program Files (x86)', 'Steam')
+    }
   }
 } else {
   pathTo = path.join(__dirname, 'Dummy')
