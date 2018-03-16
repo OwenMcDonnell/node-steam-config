@@ -37,14 +37,14 @@ if (platform === 'win32') {
   winreg = new Registry('HKCU\\Software\\Valve\\Steam')
 }
 
-async describe('SteamConfig', function () {
+describe('SteamConfig', function () {
   beforeEach(async function () {
     this.timeout(4000)
     await dummy.makeDummy(pathTo, true)
     steam = new SteamConfig()
   })
 
-  afterEach(function () {
+  afterEach(async function () {
     if (platform === 'win32' && await winreg.has('HKCU\\Software', 'Valve')) {
       await winreg.delete('HKCU\\Software', 'Valve')
     }
@@ -126,7 +126,7 @@ async describe('SteamConfig', function () {
   })
 })
 
-async describe('SteamConfig', function () {
+describe('SteamConfig', function () {
   beforeEach(async function () {
     this.timeout(4000)
     await dummy.makeDummy(pathTo, true)
@@ -140,7 +140,7 @@ async describe('SteamConfig', function () {
     steam.paths.accountId = steam.currentUser.accountId
   })
 
-  afterEach(function () {
+  afterEach(async function () {
     if (platform === 'win32' && await winreg.has('HKCU\\Software', 'Valve')) {
       await winreg.delete('HKCU\\Software', 'Valve')
     }
