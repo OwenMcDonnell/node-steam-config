@@ -14,7 +14,7 @@ let pathTo
 let steam
 let winreg
 
-if (process.env.CI === true) {
+if (process.env.CI === 'True') {
   if (platform === 'darwin') {
     pathTo = path.join(require('os').homedir(), 'Library', 'Application Support', 'Steam')
   } /* istanbul ignore next */ else if (platform === 'linux') {
