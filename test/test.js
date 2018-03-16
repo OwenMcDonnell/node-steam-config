@@ -37,7 +37,7 @@ if (platform === 'win32') {
   winreg = new Registry('HKCU\\Software\\Valve\\Steam')
 }
 
-describe('SteamConfig', function () {
+async describe('SteamConfig', function () {
   beforeEach(async function () {
     this.timeout(4000)
     await dummy.makeDummy(pathTo, true)
@@ -126,7 +126,7 @@ describe('SteamConfig', function () {
   })
 })
 
-describe('SteamConfig', function () {
+async describe('SteamConfig', function () {
   beforeEach(async function () {
     this.timeout(4000)
     await dummy.makeDummy(pathTo, true)
