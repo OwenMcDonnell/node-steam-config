@@ -5,7 +5,7 @@ const path = require('path')
 const SteamConfig = require('../lib/index.js')
 const Dummy = require('steam-dummy')
 const should = require('chai').should() // eslint-disable-line no-unused-vars
-const arch = require('process').arch()
+const arch = require('process').arch
 const platform = require('os').platform()
 const {Registry} = require('rage-edit')
 
