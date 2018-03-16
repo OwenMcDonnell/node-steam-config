@@ -22,7 +22,7 @@ if (process.env.CI === 'True') {
   } else if (platform === 'win32') {
     if (arch === 'x64') {
       pathTo = path.join('C:', 'Program Files', 'Steam')
-    } else if (arch === 'x32') {
+    } else {
       pathTo = path.join('C:', 'Program Files (x86)', 'Steam')
     }
   }
