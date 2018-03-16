@@ -1,19 +1,17 @@
-# Build using both 32-bit and 64-bit Windows.
-platform:
-  - x64
-  - x86
+image: ubuntu
 
 # Because of this:
 #   https://help.github.com/articles/dealing-with-line-endings/
-init:
-  - git config --global core.autocrlf input
+#init:
+  #- git config --global core.autocrlf input
 
 install:
   - ps: Install-Product node $env:nodejs_version $env:platform
   - npm i -g npm
-  - ps: Write-Host "Installing Yarn 1.5.1..."
-  - ps: (New-Object Net.WebClient).DownloadFile('https://github.com/yarnpkg/yarn/releases/download/v1.5.1/yarn-1.5.1.msi', "$env:temp\yarn-1.5.1.msi")
-  - ps: cmd /c start /wait msiexec.exe /i $env:temp\yarn-1.5.1.msi /quiet
+  - npm i -g yarn
+  #- ps: Write-Host "Installing Yarn 1.5.1..."
+  #- ps: (New-Object Net.WebClient).DownloadFile('https://github.com/yarnpkg/yarn/releases/download/v1.5.1/yarn-1.5.1.msi', "$env:temp\yarn-1.5.1.msi")
+  #- ps: cmd /c start /wait msiexec.exe /i $env:temp\yarn-1.5.1.msi /quiet
   - yarn --version
   - yarn
 
@@ -29,15 +27,20 @@ build:
 
 # Run build (tests)
 build_script:
+  - yarn docs-prep
   - yarn lint
   - yarn test-examples
   - yarn nyct
 
 # After successful build
-on_success:
+#on_success:
+  #- yarn textcov
+  #- yarn codecov
+after_success:
+  - chmod 0755 /home/travis/build/l3laze/node-steam-config/.nyc_output
   - yarn textcov
   - yarn codecov
-
-environment:
-  matrix:
-    - nodejs_version: 8
+#environment:
+ # matrix:
+  #  - nodejs_version: 8
+stack: node 9
