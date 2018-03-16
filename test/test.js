@@ -31,6 +31,7 @@ if (process.env.CI === 'True') {
 }
 console.log('PATH')
 console.log(pathTo)
+console.log(arch)
 
 if (platform === 'win32') {
   winreg = new Registry('HKCU\\Software\\Valve\\Steam')
