@@ -5,7 +5,7 @@ const path = require('path')
 const SteamConfig = require('../lib/index.js')
 const Dummy = require('steam-dummy')
 const should = require('chai').should() // eslint-disable-line no-unused-vars
-const arch = require('process').arch
+const process = require('process')
 const platform = require('os').platform()
 const {Registry} = require('rage-edit')
 
@@ -20,9 +20,9 @@ if (process.env.CI === 'True') {
   } /* istanbul ignore next */ else if (platform === 'linux') {
     pathTo = path.join(require('os').homedir(), '.steam')
   } else if (platform === 'win32') {
-    if (arch === 'x32') {
+    if (process.arch === 'x32') {
       pathTo = path.join('C:', 'Program Files', 'Steam')
-    } else if (arch === 'x64') {
+    } else if (process.arch === 'x64') {
       pathTo = path.join('C:', 'Program Files (x86)', 'Steam')
     }
   }
