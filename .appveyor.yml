@@ -32,7 +32,7 @@ install:
 build_script:
   - yarn lint
   - yarn test-examples
-  #- yarn nyct
+  - yarn nyct
 
 # After successful build
 on_success:
