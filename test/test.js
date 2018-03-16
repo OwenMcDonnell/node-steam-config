@@ -27,6 +27,8 @@ if (process.env.CI === true) {
 } else {
   pathTo = path.join(__dirname, 'Dummy')
 }
+console.log('PATHTO')
+console.log(pathTo)
 
 if (platform === 'win32') {
   winreg = new Registry('HKCU\\Software\\Valve\\Steam')
