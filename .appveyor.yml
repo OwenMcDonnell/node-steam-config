@@ -17,7 +17,6 @@ install:
   - yarn --version
   - yarn
 
-
 # Cache some dirs for faster build.
 #cache:
  # - "%LOCALAPPDATA%\\Yarn"
