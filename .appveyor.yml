@@ -9,7 +9,7 @@ init:
   - git config --global core.autocrlf input
 
 install:
-  - ps: Install-Product node $env:nodejs_version
+  - ps: Install-Product node $env:nodejs_version $env:platform
   - npm i -g npm
   - ps: Write-Host "Installing Yarn 1.5.1..."
   - ps: (New-Object Net.WebClient).DownloadFile('https://github.com/yarnpkg/yarn/releases/download/v1.5.1/yarn-1.5.1.msi', "$env:temp\yarn-1.5.1.msi")
