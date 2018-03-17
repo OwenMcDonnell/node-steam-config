@@ -23,7 +23,6 @@ install:
 build:
   verbosity: minimal
 
-
 # Run build (tests)
 build_script:
 
