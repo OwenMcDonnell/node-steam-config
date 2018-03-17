@@ -29,13 +29,11 @@ build_script:
   - yarn test-examples
   - yarn nyct
 
-
 # After successful build
 #on_success:
   #- yarn textcov
   #- yarn codecov
 on_success:
-
   - yarn textcov
   - yarn codecov
 #environment:
