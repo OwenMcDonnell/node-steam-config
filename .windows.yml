@@ -21,7 +21,6 @@ install:
 #cache:
  # - "%LOCALAPPDATA%\\Yarn"
 
-
 # Quiet-ish build.
 #build:
   #verbosity: minimal
