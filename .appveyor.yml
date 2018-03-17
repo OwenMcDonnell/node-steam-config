@@ -25,7 +25,6 @@ build:
 
 # Run build (tests)
 build_script:
-
   - yarn lint
   - yarn test-examples
   - yarn nyct
