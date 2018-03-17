@@ -14,24 +14,21 @@ let pathTo
 let steam
 let winreg
 
-if (process.env.CI === 'True') {
+if (process.env.CI === true) {
   if (platform === 'darwin') {
     pathTo = path.join(require('os').homedir(), 'Library', 'Application Support', 'Steam')
   } /* istanbul ignore next */ else if (platform === 'linux') {
     pathTo = path.join(require('os').homedir(), '.steam')
   } else if (platform === 'win32') {
-    if (arch === 'x64') {
+    if (arch === 'ia32') {
       pathTo = path.join('C:', 'Program Files', 'Steam')
-    } else {
+    } else if (arch === 'ia64') {
       pathTo = path.join('C:', 'Program Files (x86)', 'Steam')
     }
   }
 } else {
   pathTo = path.join(__dirname, 'Dummy')
 }
-console.log('PATH')
-console.log(pathTo)
-console.log(arch)
 
 if (platform === 'win32') {
   winreg = new Registry('HKCU\\Software\\Valve\\Steam')
@@ -44,9 +41,9 @@ describe('SteamConfig', function () {
     steam = new SteamConfig()
   })
 
-  afterEach(async function () {
-    if (platform === 'win32' && await winreg.has('HKCU\\Software', 'Valve')) {
-      await winreg.delete('HKCU\\Software', 'Valve')
+  afterEach(function () {
+    if (platform === 'win32' && winreg.has('HKCU\\Software', 'Valve')) {
+      winreg.delete('HKCU\\Software', 'Valve')
     }
     steam = undefined
   })
@@ -140,9 +137,9 @@ describe('SteamConfig', function () {
     steam.paths.accountId = steam.currentUser.accountId
   })
 
-  afterEach(async function () {
-    if (platform === 'win32' && await winreg.has('HKCU\\Software', 'Valve')) {
-      await winreg.delete('HKCU\\Software', 'Valve')
+  afterEach(function () {
+    if (platform === 'win32' && winreg.has('HKCU\\Software', 'Valve')) {
+      winreg.delete('HKCU\\Software', 'Valve')
     }
     steam = undefined
   })
