@@ -5,7 +5,6 @@ image: ubuntu
 #init:
   #- git config --global core.autocrlf input
 
-
 install:
   #- ps: Install-Product node $env:nodejs_version $env:platform
   - npm i -g npm
